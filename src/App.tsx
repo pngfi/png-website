@@ -1,21 +1,23 @@
 import React from 'react';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 
 import {
   BrowserRouter as Router,
   Routes,
   Route,
 } from 'react-router-dom';
-
 import {
   Home,
 } from 'views';
 
-import { defaultTheme } from 'config';
-
+const config = {
+  initialColorMode: 'dark',
+  useSystemColorMode: false
+};
+const theme = extendTheme({ config })
 export const App = () => {
   return (
-    <ChakraProvider theme={defaultTheme}>
+    <ChakraProvider theme={theme}>
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
